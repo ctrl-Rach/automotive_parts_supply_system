@@ -10,7 +10,7 @@
 #include "common.h"
 
 // initial stock
-int tire_stock = INITIAL_TIRE_STOCK;
+int tyre_stock = INITIAL_TYRE_STOCK;
 int engine_stock = INITIAL_ENGINE_STOCK;
 
 mqd_t mq;
@@ -34,15 +34,15 @@ void* logger_thread(void* arg) {
               }
               
             pthread_mutex_lock(&lock);
-            int supplied_tire, supplied_engine;
+            int supplied_tyre, supplied_engine;
 
-            // tire logic
-            if (tire_stock >= ord.tire) {
-                supplied_tire = ord.tire;
-                tire_stock -= ord.tire;
+            // tyre logic
+            if (tyre_stock >= ord.tyre) {
+                supplied_tyre = ord.tyre;
+                tyre_stock -= ord.tyre;
             } else {
-                supplied_tire = tire_stock;
-                tire_stock = 0;
+                supplied_tyre = tyre_stock;
+                tyre_stock = 0;
                 low_stock_flag = 1;
             }
 
@@ -60,30 +60,30 @@ void* logger_thread(void* arg) {
             // output
             printf("\n----------------------------------------\n");
             printf("\nOrder %d :\n", ord.order_id);
-            printf("Tire = %d\n", ord.tire);
+            printf("Tyre = %d\n", ord.tyre);
             printf("Engine = %d\n", ord.engine);
 
             printf("\nSupplied :\n");
-            printf("Tire = %d\n", supplied_tire);
+            printf("Tyre = %d\n", supplied_tyre);
             printf("Engine = %d\n", supplied_engine);
 
             printf("\nTotal Stock Remaining :\n");
-            printf("Tire = %d\n", tire_stock);
+            printf("Tyre = %d\n", tyre_stock);
             printf("Engine = %d\n", engine_stock);
             
-            // CASE 1: Only tires finished
-            if (tire_stock == 0 && engine_stock > 0) {
-                printf("\nNOTICE: Tire stock unavailable. Processing only engine orders.\n");
-                ord.tire = 0;
+            // CASE 1: Only tyres finished
+            if (tyre_stock == 0 && engine_stock > 0) {
+                printf("\nNOTICE: Tyre stock unavailable. Processing only engine orders.\n");
+                ord.tyre = 0;
             }
 
             // CASE 2: Only engines finished
-            if (engine_stock == 0 && tire_stock > 0) {
-                printf("\nNOTICE: Engine stock unavailable. Processing only tire orders.\n");
+            if (engine_stock == 0 && tyre_stock > 0) {
+                printf("\nNOTICE: Engine stock unavailable. Processing only tyre orders.\n");
                 ord.engine = 0;
             }
                         
-             if (tire_stock == 0 && engine_stock == 0)
+             if (tyre_stock == 0 && engine_stock == 0)
               {
                   printf("\nSYSTEM NOTICE: Inventory depleted. Order processing stopped.\n");
                   

@@ -2,7 +2,7 @@
 
 ## 1. Scenario Summary
 
-This project simulates an automotive parts supply system where orders for tires and engines are generated, processed, and monitored. The system uses multiple processes and threads to handle order generation, stock management, alert generation, and logging.
+This project simulates an automotive parts supply system where orders for tyres and engines are generated, processed, and monitored. The system uses multiple processes and threads to handle order generation, stock management, alert generation, and logging.
 
 Orders are generated randomly and sent to a monitoring process, which updates stock and triggers alerts when stock becomes low. The system shuts down automatically when inventory is exhausted.
 
@@ -85,28 +85,28 @@ Threads:
 
 ----------------------------------------
 Order 1 :
-Tire = 4
+Tyre = 4
 Engine = 2
 
 Supplied :
-Tire = 4
+Tyre = 4
 Engine = 2
 
 Total Stock Remaining :
-Tire = 96
+Tyre = 96
 Engine = 98
 
 ----------------------------------------
 Order 2 :
-Tire = 6
+Tyre = 6
 Engine = 3
 
 Supplied :
-Tire = 6
+Tyre = 6
 Engine = 3
 
 Total Stock Remaining :
-Tire = 90
+Tyre = 90
 Engine = 95
 
 [ALERT]: LOW STOCK! Reorder required

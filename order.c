@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     while (1) {
 
         ord.order_id = order_id++;
-        ord.tire = rand() % 10 + 1;
+        ord.tyre = rand() % 10 + 1;
         ord.engine = rand() % 8 + 1;
 
         // send order to monitor
