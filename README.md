@@ -12,15 +12,9 @@ Orders are generated randomly and sent to a monitoring process, which updates st
 
 Process Level:
 
-        mymain (Controller)
-                |
-                |  Message Queue (Alerts)
-                v
-        mymonitor (Processing + Threads)
-                |
-                |  Pipe (Orders)
-                v
-        myorder (Order Generator)
+
+<img width="869" height="519" alt="image" src="https://github.com/user-attachments/assets/4cf6a37e-31c5-49d2-8321-8ffe77cc92a1" />
+
 
 
 Thread Level (inside mymonitor):
